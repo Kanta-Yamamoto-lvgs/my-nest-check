@@ -21,8 +21,8 @@ type Mutation {
 }
 
 type Query {
-  findAll: [Todo]!
-  findOneById(id: Int!): Todo!
+  todoFindAll: [Todo]!
+  todoFindOneById(id: Int!): Todo!
 }
 
 type Todo {

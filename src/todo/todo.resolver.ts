@@ -17,12 +17,12 @@ import {
     constructor(private todoService: TodoService) {}
   
     @Query(() => [Todo], { nullable: 'items' })
-    findAll() {
+    todoFindAll() {
       return this.todoService.findAll();
     }
   
     @Query(() => Todo)
-    findOneById(@Args('id', { type: () => Int }) id: number) {
+    todoFindOneById(@Args('id', { type: () => Int }) id: number) {
       return this.todoService.findOneById(id);
     }
   
