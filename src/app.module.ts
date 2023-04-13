@@ -13,24 +13,19 @@ import { join } from 'path';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'mysql',
-      port: Number(process.env.TYPEORM_PORT) || 3306,
-      username: process.env.TYPEORM_USERNAME || 'user',
-      password: process.env.TYPEORM_PASSWORD || 'password',
-      database: process.env.TYPEORM_DATABASE || 'develop',
-      synchronize: process.env.TYPEORM_SYNCHRONIZE === 'true' || true,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      migrations: [__dirname + '/../migration/*{.ts,.js}'],
-      cli: {
-        migrationsDir: 'src/migration'
-      }
+      port: 3306,
+      username: 'user',
+      password: 'password',
+      database: 'develop',
+      synchronize: true,
+      entities: ['dist/entities/*.entity{.ts,.js}'],
+      migrations: ['dist/migration/*{.ts,.js}'],
     }),
     TodoModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
-      // debug: false,
-      // playground: false,
     }),
   ],
   controllers: [AppController],
